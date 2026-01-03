@@ -6,6 +6,26 @@ node_modules
 # Secrets (IMPORTANT - never commit)
 .env.local
 *.local
+.env
+.env.production
+.env.development
+.env.staging
+.env.vercel
+.env.backup*
+.env.*backup*
+env_dump/
+
+# Service account files
+*-service-account.json
+serviceAccount*.json
+*.pem
+*.key
+*.p12
+
+# PowerShell scripts with hardcoded secrets
+set-*.ps1
+deploy-*.ps1
+update-*.ps1
 
 # Build outputs
 dist
@@ -20,10 +40,12 @@ packages/strapi-cms/build
 packages/strapi-cms/dist
 packages/strapi-cms/exports
 
-# Environment files
+# Environment files (comprehensive)
 .env
 .env.local
 .env.*.local
+.env.production
+.env.development
 !.env.example
 
 # Logs
