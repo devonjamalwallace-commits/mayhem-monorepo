@@ -4,7 +4,15 @@
  */
 
 const fetch = require('node-fetch');
-const twilio = require('twilio')(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
+
+// Lazy-load Twilio to prevent crashes if env vars not set
+let twilioClient = null;
+const getTwilioClient = () => {
+  if (!twilioClient && process.env.TWILIO_ACCOUNT_SID && process.env.TWILIO_AUTH_TOKEN) {
+    twilioClient = require('twilio')(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
+  }
+  return twilioClient;
+};
 
 module.exports = {
   /**
@@ -54,6 +62,11 @@ module.exports = {
    * Send SMS via Twilio
    */
   async sendSMS({ to, body, site_id }) {
+    const twilio = getTwilioClient();
+    if (!twilio) {
+      throw new Error('Twilio not configured. Set TWILIO_ACCOUNT_SID and TWILIO_AUTH_TOKEN environment variables.');
+    }
+
     try {
       const message = await twilio.messages.create({
         body,

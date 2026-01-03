@@ -5,18 +5,29 @@
 
 const cloudinary = require('cloudinary').v2;
 
-// Configure Cloudinary
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-});
+// Lazy-configure Cloudinary to prevent crashes if env vars not set
+let isConfigured = false;
+const ensureCloudinaryConfigured = () => {
+  if (!isConfigured && process.env.CLOUDINARY_CLOUD_NAME) {
+    cloudinary.config({
+      cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+      api_key: process.env.CLOUDINARY_API_KEY,
+      api_secret: process.env.CLOUDINARY_API_SECRET,
+    });
+    isConfigured = true;
+  }
+  if (!isConfigured) {
+    throw new Error('Cloudinary not configured. Set CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, and CLOUDINARY_API_SECRET environment variables.');
+  }
+};
 
 module.exports = {
   /**
    * Upload image to Cloudinary
    */
   async uploadImage({ file, folder, site_id, options = {} }) {
+    ensureCloudinaryConfigured();
+
     try {
       const result = await cloudinary.uploader.upload(file, {
         folder: folder || `site-${site_id}`,
