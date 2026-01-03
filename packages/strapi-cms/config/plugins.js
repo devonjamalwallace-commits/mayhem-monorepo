@@ -10,4 +10,10 @@ module.exports = ({ env }) => ({
       amountLimit: 100,
     },
   },
+
+  // AI Assistant Plugin
+  'ai-assistant': {
+    enabled: true,
+    resolve: './src/plugins/ai-assistant',
+  },
 });
