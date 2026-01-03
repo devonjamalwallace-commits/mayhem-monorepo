@@ -10,7 +10,7 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "@strapi/strapi": "^4.0.0"
+    "@strapi/strapi": "^5.0.0"
   },
   "author": {
     "name": "Mayhem Team"
