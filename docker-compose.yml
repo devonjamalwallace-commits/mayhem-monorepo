@@ -1,0 +1,180 @@
+version: '3.8'
+
+services:
+  # ============================================
+  # PostgreSQL Database
+  # ============================================
+  postgres:
+    image: postgres:15-alpine
+    container_name: mayhem-postgres
+    environment:
+      POSTGRES_DB: mayhem_strapi
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres_dev_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - mayhem-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ============================================
+  # Redis Cache
+  # ============================================
+  redis:
+    image: redis:7-alpine
+    container_name: mayhem-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - mayhem-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ============================================
+  # Strapi CMS
+  # ============================================
+  strapi:
+    build:
+      context: ./packages/strapi-cms
+      dockerfile: Dockerfile
+    container_name: mayhem-strapi
+    environment:
+      # Server
+      HOST: 0.0.0.0
+      PORT: 1337
+      PUBLIC_URL: http://localhost:1337
+
+      # Database
+      DATABASE_CLIENT: postgres
+      DATABASE_HOST: postgres
+      DATABASE_PORT: 5432
+      DATABASE_NAME: mayhem_strapi
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: postgres_dev_password
+      DATABASE_SSL: "false"
+
+      # Redis
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+
+      # Keys (set proper values in production)
+      APP_KEYS: mayhem-key-1,mayhem-key-2,mayhem-key-3,mayhem-key-4
+      API_TOKEN_SALT: mayhem-api-token-salt
+      ADMIN_JWT_SECRET: mayhem-admin-jwt-secret
+      TRANSFER_TOKEN_SALT: mayhem-transfer-token-salt
+      JWT_SECRET: mayhem-jwt-secret
+
+      # Integrations (from .env file)
+      WORKOS_API_KEY: ${WORKOS_API_KEY}
+      WORKOS_CLIENT_ID: ${WORKOS_CLIENT_ID}
+      N8N_HOST: ${N8N_HOST}
+      N8N_API_KEY: ${N8N_API_KEY}
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+      NOTION_API_KEY: ${NOTION_API_KEY}
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
+    ports:
+      - "1337:1337"
+    volumes:
+      - ./packages/strapi-cms:/app
+      - /app/node_modules
+      - strapi_uploads:/app/public/uploads
+    networks:
+      - mayhem-network
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # ============================================
+  # Mayhemworld.io (Next.js)
+  # ============================================
+  mayhemworld:
+    build:
+      context: ./apps/mayhemworld-io
+      dockerfile: Dockerfile
+    container_name: mayhem-mayhemworld
+    environment:
+      NEXT_PUBLIC_STRAPI_URL: http://strapi:1337
+      NEXT_PUBLIC_SITE_UID: mayhemworld-io
+    ports:
+      - "3000:3000"
+    networks:
+      - mayhem-network
+    depends_on:
+      - strapi
+
+  # ============================================
+  # Nexus AI (Next.js)
+  # ============================================
+  nexus-ai:
+    build:
+      context: ./apps/nexus-ai
+      dockerfile: Dockerfile
+    container_name: mayhem-nexus-ai
+    environment:
+      NEXT_PUBLIC_STRAPI_URL: http://strapi:1337
+      NEXT_PUBLIC_SITE_UID: nexus-ai
+    ports:
+      - "3001:3000"
+    networks:
+      - mayhem-network
+    depends_on:
+      - strapi
+
+  # ============================================
+  # Goddesses of ATL (Next.js)
+  # ============================================
+  goddesses:
+    build:
+      context: ./apps/goddesses-of-atl
+      dockerfile: Dockerfile
+    container_name: mayhem-goddesses
+    environment:
+      NEXT_PUBLIC_STRAPI_URL: http://strapi:1337
+      NEXT_PUBLIC_SITE_UID: goddesses-of-atl
+    ports:
+      - "3002:3000"
+    networks:
+      - mayhem-network
+    depends_on:
+      - strapi
+
+  # ============================================
+  # ShotByMayhem (Next.js)
+  # ============================================
+  shotbymayhem:
+    build:
+      context: ./apps/shotbymayhem
+      dockerfile: Dockerfile
+    container_name: mayhem-shotbymayhem
+    environment:
+      NEXT_PUBLIC_STRAPI_URL: http://strapi:1337
+      NEXT_PUBLIC_SITE_UID: shotbymayhem
+    ports:
+      - "3003:3000"
+    networks:
+      - mayhem-network
+    depends_on:
+      - strapi
+
+volumes:
+  postgres_data:
+  redis_data:
+  strapi_uploads:
+
+networks:
+  mayhem-network:
+    driver: bridge

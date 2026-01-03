@@ -1,0 +1,54 @@
+{
+  "collectionName": "components_product_shippings",
+  "info": {
+    "displayName": "Shipping",
+    "description": "Product shipping configuration",
+    "icon": "truck"
+  },
+  "options": {},
+  "attributes": {
+    "requires_shipping": {
+      "type": "boolean",
+      "default": true
+    },
+    "weight": {
+      "type": "decimal",
+      "min": 0
+    },
+    "weight_unit": {
+      "type": "enumeration",
+      "enum": ["lb", "oz", "kg", "g"],
+      "default": "lb"
+    },
+    "length": {
+      "type": "decimal",
+      "min": 0
+    },
+    "width": {
+      "type": "decimal",
+      "min": 0
+    },
+    "height": {
+      "type": "decimal",
+      "min": 0
+    },
+    "dimension_unit": {
+      "type": "enumeration",
+      "enum": ["in", "cm"],
+      "default": "in"
+    },
+    "flat_rate": {
+      "type": "decimal",
+      "min": 0
+    },
+    "free_shipping": {
+      "type": "boolean",
+      "default": false
+    },
+    "shipping_class": {
+      "type": "enumeration",
+      "enum": ["standard", "expedited", "overnight", "freight"],
+      "default": "standard"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "collectionName": "components_product_variants",
+  "info": {
+    "displayName": "Product Variant",
+    "description": "Product variant options",
+    "icon": "layer"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "maxLength": 100
+    },
+    "sku": {
+      "type": "string",
+      "maxLength": 50
+    },
+    "price_adjustment": {
+      "type": "decimal",
+      "default": 0
+    },
+    "inventory_quantity": {
+      "type": "integer",
+      "default": 0,
+      "min": 0
+    },
+    "stripe_price_id": {
+      "type": "string"
+    },
+    "options": {
+      "type": "json"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "is_default": {
+      "type": "boolean",
+      "default": false
+    },
+    "available": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

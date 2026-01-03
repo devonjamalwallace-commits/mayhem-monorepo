@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_page_contact_forms",
+  "info": {
+    "displayName": "Contact Form",
+    "description": "Contact form section",
+    "icon": "envelope"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "maxLength": 100,
+      "default": "Contact Us"
+    },
+    "description": {
+      "type": "text",
+      "maxLength": 300
+    },
+    "recipient_email": {
+      "type": "email",
+      "required": true
+    },
+    "success_message": {
+      "type": "string",
+      "default": "Thank you for your message. We'll get back to you soon!"
+    },
+    "fields": {
+      "type": "json"
+    },
+    "enable_file_upload": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

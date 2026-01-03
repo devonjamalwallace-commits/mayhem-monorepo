@@ -1,0 +1,36 @@
+{
+  "collectionName": "components_shared_email_configs",
+  "info": {
+    "displayName": "Email Config",
+    "description": "Email configuration per site",
+    "icon": "envelope"
+  },
+  "options": {},
+  "attributes": {
+    "from_email": {
+      "type": "email",
+      "required": true
+    },
+    "from_name": {
+      "type": "string",
+      "required": true,
+      "maxLength": 100
+    },
+    "reply_to": {
+      "type": "email"
+    },
+    "sendgrid_env_key": {
+      "type": "string",
+      "private": true
+    },
+    "welcome_template_id": {
+      "type": "string"
+    },
+    "order_confirmation_template_id": {
+      "type": "string"
+    },
+    "password_reset_template_id": {
+      "type": "string"
+    }
+  }
+}

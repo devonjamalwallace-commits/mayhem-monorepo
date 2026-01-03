@@ -1,0 +1,23 @@
+export { StrapiClient, StrapiClientError, createStrapiClient } from './client';
+export type {
+  StrapiConfig,
+  StrapiError,
+  StrapiMeta,
+  StrapiResponse,
+  StrapiListResponse,
+  SEO,
+  Media,
+  MediaFormat,
+  SocialLink,
+  Analytics,
+  Site,
+  Category,
+  Tag,
+  ProductVariant,
+  ProductShipping,
+  Product,
+  Author,
+  Blog,
+  Page,
+  QueryParams,
+} from './types';

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "version": 2,
+  "projects": [
+    {
+      "name": "mayhemworld-io",
+      "root": "apps/mayhemworld-io"
+    },
+    {
+      "name": "nexus-ai",
+      "root": "apps/nexus-ai"
+    },
+    {
+      "name": "goddesses-of-atl",
+      "root": "apps/goddesses-of-atl"
+    },
+    {
+      "name": "shotbymayhem",
+      "root": "apps/shotbymayhem"
+    }
+  ]
+}

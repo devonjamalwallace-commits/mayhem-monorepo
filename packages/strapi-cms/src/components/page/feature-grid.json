@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_page_feature_grids",
+  "info": {
+    "displayName": "Feature Grid",
+    "description": "Grid of feature cards",
+    "icon": "th-large"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "maxLength": 100
+    },
+    "description": {
+      "type": "text",
+      "maxLength": 300
+    },
+    "features": {
+      "type": "json",
+      "required": true
+    },
+    "columns": {
+      "type": "enumeration",
+      "enum": ["2", "3", "4"],
+      "default": "3"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_page_text_sections",
+  "info": {
+    "displayName": "Text Section",
+    "description": "Rich text content section",
+    "icon": "align-left"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "maxLength": 100
+    },
+    "content": {
+      "type": "richtext",
+      "required": true
+    },
+    "background_color": {
+      "type": "string",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+    },
+    "text_columns": {
+      "type": "enumeration",
+      "enum": ["1", "2", "3"],
+      "default": "1"
+    }
+  }
+}

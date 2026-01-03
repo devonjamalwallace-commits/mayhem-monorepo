@@ -1,0 +1,41 @@
+{
+  "collectionName": "components_shared_social_links",
+  "info": {
+    "displayName": "Social Link",
+    "description": "Social media link",
+    "icon": "link"
+  },
+  "options": {},
+  "attributes": {
+    "platform": {
+      "type": "enumeration",
+      "enum": [
+        "facebook",
+        "twitter",
+        "instagram",
+        "linkedin",
+        "youtube",
+        "tiktok",
+        "pinterest",
+        "discord",
+        "twitch",
+        "github",
+        "threads",
+        "other"
+      ],
+      "required": true
+    },
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "label": {
+      "type": "string",
+      "maxLength": 50
+    },
+    "display_order": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}

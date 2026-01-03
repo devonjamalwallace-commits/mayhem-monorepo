@@ -1,0 +1,143 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product",
+    "description": "Unified product schema for all brands"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "content-manager": {
+      "visible": true
+    },
+    "content-type-builder": {
+      "visible": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "maxLength": 200
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "short_description": {
+      "type": "text",
+      "maxLength": 160
+    },
+    "price": {
+      "type": "decimal",
+      "required": true,
+      "min": 0
+    },
+    "compare_at_price": {
+      "type": "decimal",
+      "min": 0
+    },
+    "currency": {
+      "type": "enumeration",
+      "enum": ["USD", "EUR", "GBP", "CAD", "AUD"],
+      "default": "USD",
+      "required": true
+    },
+    "product_type": {
+      "type": "enumeration",
+      "enum": ["physical", "digital", "service", "subscription"],
+      "required": true
+    },
+    "stripe_product_id": {
+      "type": "string",
+      "maxLength": 100
+    },
+    "stripe_price_id": {
+      "type": "string",
+      "maxLength": 100
+    },
+    "sku": {
+      "type": "string",
+      "unique": true,
+      "maxLength": 50
+    },
+    "inventory_quantity": {
+      "type": "integer",
+      "default": 0,
+      "min": 0
+    },
+    "track_inventory": {
+      "type": "boolean",
+      "default": true
+    },
+    "allow_backorder": {
+      "type": "boolean",
+      "default": false
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "digital_file": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["files"]
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "inversedBy": "products"
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tag.tag",
+      "inversedBy": "products"
+    },
+    "site": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::site.site",
+      "inversedBy": "products",
+      "required": true
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    },
+    "variants": {
+      "type": "component",
+      "repeatable": true,
+      "component": "product.variant"
+    },
+    "shipping": {
+      "type": "component",
+      "repeatable": false,
+      "component": "product.shipping"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["draft", "active", "archived"],
+      "default": "draft",
+      "required": true
+    }
+  }
+}

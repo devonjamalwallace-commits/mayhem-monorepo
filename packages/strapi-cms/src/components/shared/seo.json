@@ -1,0 +1,51 @@
+{
+  "collectionName": "components_shared_seos",
+  "info": {
+    "displayName": "SEO",
+    "description": "SEO metadata component",
+    "icon": "search"
+  },
+  "options": {},
+  "attributes": {
+    "meta_title": {
+      "type": "string",
+      "maxLength": 60
+    },
+    "meta_description": {
+      "type": "text",
+      "maxLength": 160
+    },
+    "meta_keywords": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "og_title": {
+      "type": "string",
+      "maxLength": 60
+    },
+    "og_description": {
+      "type": "text",
+      "maxLength": 200
+    },
+    "og_image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "twitter_card": {
+      "type": "enumeration",
+      "enum": ["summary", "summary_large_image", "app", "player"],
+      "default": "summary_large_image"
+    },
+    "canonical_url": {
+      "type": "string"
+    },
+    "robots": {
+      "type": "string",
+      "default": "index, follow"
+    },
+    "structured_data": {
+      "type": "json"
+    }
+  }
+}

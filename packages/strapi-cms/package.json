@@ -1,0 +1,44 @@
+{
+  "name": "strapi-cms",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Multi-site Strapi CMS for Mayhem Brands",
+  "license": "MIT",
+  "scripts": {
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi",
+    "deploy": "strapi deploy",
+    "seed": "node scripts/seed.js"
+  },
+  "dependencies": {
+    "@strapi/strapi": "^5.0.0",
+    "@strapi/plugin-users-permissions": "^5.0.0",
+    "@strapi/plugin-graphql": "^5.0.0",
+    "@strapi/plugin-seo": "^5.0.0",
+    "@strapi/provider-upload-cloudinary": "^5.0.0",
+    "@strapi/provider-email-sendgrid": "^5.0.0",
+    "@google-analytics/data": "^4.0.0",
+    "@google/generative-ai": "^0.21.0",
+    "@notionhq/client": "^2.2.0",
+    "@octokit/rest": "^20.0.0",
+    "@workos-inc/node": "^7.0.0",
+    "axios": "^1.6.0",
+    "stripe": "^14.0.0",
+    "better-sqlite3": "^9.4.0",
+    "pg": "^8.11.0",
+    "reading-time": "^1.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "typescript": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=18.0.0 <=22.x.x",
+    "npm": ">=6.0.0"
+  },
+  "strapi": {
+    "uuid": "mayhem-cms-001"
+  }
+}

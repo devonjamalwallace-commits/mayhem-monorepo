@@ -1,0 +1,43 @@
+{
+  "collectionName": "components_page_cta_sections",
+  "info": {
+    "displayName": "CTA Section",
+    "description": "Call to action section",
+    "icon": "bullhorn"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "required": true,
+      "maxLength": 100
+    },
+    "description": {
+      "type": "text",
+      "maxLength": 300
+    },
+    "primary_button_text": {
+      "type": "string",
+      "maxLength": 50
+    },
+    "primary_button_url": {
+      "type": "string"
+    },
+    "secondary_button_text": {
+      "type": "string",
+      "maxLength": 50
+    },
+    "secondary_button_url": {
+      "type": "string"
+    },
+    "background_color": {
+      "type": "string",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+    },
+    "background_image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    }
+  }
+}

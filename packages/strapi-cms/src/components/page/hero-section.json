@@ -1,0 +1,48 @@
+{
+  "collectionName": "components_page_hero_sections",
+  "info": {
+    "displayName": "Hero Section",
+    "description": "Hero banner section",
+    "icon": "star"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "required": true,
+      "maxLength": 100
+    },
+    "subheading": {
+      "type": "text",
+      "maxLength": 200
+    },
+    "background_image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "background_video": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["videos"]
+    },
+    "cta_text": {
+      "type": "string",
+      "maxLength": 50
+    },
+    "cta_url": {
+      "type": "string"
+    },
+    "text_alignment": {
+      "type": "enumeration",
+      "enum": ["left", "center", "right"],
+      "default": "center"
+    },
+    "overlay_opacity": {
+      "type": "integer",
+      "min": 0,
+      "max": 100,
+      "default": 50
+    }
+  }
+}

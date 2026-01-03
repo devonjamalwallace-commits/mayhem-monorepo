@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_page_testimonials",
+  "info": {
+    "displayName": "Testimonials",
+    "description": "Customer testimonials section",
+    "icon": "quote-right"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "maxLength": 100
+    },
+    "testimonials": {
+      "type": "json",
+      "required": true
+    },
+    "display_style": {
+      "type": "enumeration",
+      "enum": ["carousel", "grid", "list"],
+      "default": "carousel"
+    }
+  }
+}

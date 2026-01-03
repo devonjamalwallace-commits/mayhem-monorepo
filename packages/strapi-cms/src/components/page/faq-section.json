@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_page_faq_sections",
+  "info": {
+    "displayName": "FAQ Section",
+    "description": "Frequently asked questions",
+    "icon": "question-circle"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "maxLength": 100,
+      "default": "Frequently Asked Questions"
+    },
+    "faqs": {
+      "type": "json",
+      "required": true
+    },
+    "display_style": {
+      "type": "enumeration",
+      "enum": ["accordion", "list"],
+      "default": "accordion"
+    }
+  }
+}

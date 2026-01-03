@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_shared_analytics",
+  "info": {
+    "displayName": "Analytics",
+    "description": "Analytics configuration",
+    "icon": "chartLine"
+  },
+  "options": {},
+  "attributes": {
+    "google_analytics_id": {
+      "type": "string",
+      "regex": "^G-[A-Z0-9]+$"
+    },
+    "google_tag_manager_id": {
+      "type": "string",
+      "regex": "^GTM-[A-Z0-9]+$"
+    },
+    "facebook_pixel_id": {
+      "type": "string"
+    },
+    "tiktok_pixel_id": {
+      "type": "string"
+    },
+    "hotjar_id": {
+      "type": "string"
+    },
+    "clarity_id": {
+      "type": "string"
+    },
+    "custom_head_scripts": {
+      "type": "text"
+    },
+    "custom_body_scripts": {
+      "type": "text"
+    }
+  }
+}

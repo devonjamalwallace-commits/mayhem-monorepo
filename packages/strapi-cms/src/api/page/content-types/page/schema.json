@@ -1,0 +1,83 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pages",
+  "info": {
+    "singularName": "page",
+    "pluralName": "pages",
+    "displayName": "Page",
+    "description": "Static pages and landing pages"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "content-manager": {
+      "visible": true
+    },
+    "content-type-builder": {
+      "visible": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 200
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "page_type": {
+      "type": "enumeration",
+      "enum": ["standard", "landing", "contact", "about", "faq", "legal"],
+      "default": "standard",
+      "required": true
+    },
+    "content": {
+      "type": "richtext"
+    },
+    "blocks": {
+      "type": "dynamiczone",
+      "components": [
+        "page.hero-section",
+        "page.text-section",
+        "page.cta-section",
+        "page.feature-grid",
+        "page.testimonials",
+        "page.faq-section",
+        "page.contact-form"
+      ]
+    },
+    "featured_image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "site": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::site.site",
+      "inversedBy": "pages",
+      "required": true
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    },
+    "template": {
+      "type": "string",
+      "default": "default"
+    },
+    "show_in_navigation": {
+      "type": "boolean",
+      "default": false
+    },
+    "navigation_order": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}
