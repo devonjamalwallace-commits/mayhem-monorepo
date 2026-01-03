@@ -1,0 +1,123 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bookings",
+  "info": {
+    "singularName": "booking",
+    "pluralName": "bookings",
+    "displayName": "Booking",
+    "description": "Service bookings and appointments"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "booking_number": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "booking_type": {
+      "type": "enumeration",
+      "enum": ["goddess", "photoshoot", "event", "consultation", "other"],
+      "required": true
+    },
+    "customer_name": {
+      "type": "string",
+      "required": true
+    },
+    "customer_email": {
+      "type": "email",
+      "required": true
+    },
+    "customer_phone": {
+      "type": "string",
+      "required": true
+    },
+    "event_date": {
+      "type": "datetime",
+      "required": true
+    },
+    "event_end_date": {
+      "type": "datetime"
+    },
+    "duration_hours": {
+      "type": "decimal",
+      "default": 1
+    },
+    "location": {
+      "type": "string"
+    },
+    "event_type": {
+      "type": "string"
+    },
+    "guest_count": {
+      "type": "integer"
+    },
+    "special_requests": {
+      "type": "text"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["pending", "confirmed", "in_progress", "completed", "cancelled"],
+      "default": "pending",
+      "required": true
+    },
+    "payment_status": {
+      "type": "enumeration",
+      "enum": ["unpaid", "deposit_paid", "paid", "refunded"],
+      "default": "unpaid",
+      "required": true
+    },
+    "total_price": {
+      "type": "decimal",
+      "required": true
+    },
+    "deposit_amount": {
+      "type": "decimal",
+      "default": 0
+    },
+    "currency": {
+      "type": "string",
+      "default": "USD"
+    },
+    "stripe_payment_intent_id": {
+      "type": "string"
+    },
+    "stripe_session_id": {
+      "type": "string"
+    },
+    "goddess": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::goddess.goddess"
+    },
+    "service": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::service.service"
+    },
+    "site": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::site.site",
+      "required": true
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "notes": {
+      "type": "text"
+    },
+    "confirmed_at": {
+      "type": "datetime"
+    },
+    "cancelled_at": {
+      "type": "datetime"
+    },
+    "cancellation_reason": {
+      "type": "text"
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "kind": "collectionType",
+  "collectionName": "subscribers",
+  "info": {
+    "singularName": "subscriber",
+    "pluralName": "subscribers",
+    "displayName": "Subscriber",
+    "description": "Newsletter and marketing subscribers"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "email": {
+      "type": "email",
+      "required": true,
+      "unique": true
+    },
+    "phone": {
+      "type": "string"
+    },
+    "first_name": {
+      "type": "string"
+    },
+    "last_name": {
+      "type": "string"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["subscribed", "unsubscribed", "bounced", "complained"],
+      "default": "subscribed",
+      "required": true
+    },
+    "source": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "json"
+    },
+    "custom_fields": {
+      "type": "json"
+    },
+    "subscribed_at": {
+      "type": "datetime"
+    },
+    "unsubscribed_at": {
+      "type": "datetime"
+    },
+    "site": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::site.site",
+      "required": true
+    }
+  }
+}

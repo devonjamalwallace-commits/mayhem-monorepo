@@ -1,0 +1,56 @@
+{
+  "kind": "collectionType",
+  "collectionName": "social_posts",
+  "info": {
+    "singularName": "social-post",
+    "pluralName": "social-posts",
+    "displayName": "Social Post",
+    "description": "Scheduled social media posts"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "content": {
+      "type": "text",
+      "required": true
+    },
+    "image": {
+      "type": "string"
+    },
+    "platforms": {
+      "type": "json",
+      "required": true
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["scheduled", "publishing", "published", "failed"],
+      "default": "scheduled",
+      "required": true
+    },
+    "publish_date": {
+      "type": "datetime",
+      "required": true
+    },
+    "published_at_date": {
+      "type": "datetime"
+    },
+    "post_urls": {
+      "type": "json"
+    },
+    "error_message": {
+      "type": "text"
+    },
+    "site": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::site.site",
+      "required": true
+    },
+    "article": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::article.article"
+    }
+  }
+}
