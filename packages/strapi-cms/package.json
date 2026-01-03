@@ -16,8 +16,6 @@
     "@strapi/strapi": "^4.25.0",
     "@strapi/plugin-users-permissions": "^4.25.0",
     "@strapi/plugin-graphql": "^4.25.0",
-    "@strapi/provider-upload-cloudinary": "^4.25.0",
-    "@strapi/provider-email-sendgrid": "^4.25.0",
     "@google-analytics/data": "^4.0.0",
     "@google/generative-ai": "^0.21.0",
     "@notionhq/client": "^2.2.0",
