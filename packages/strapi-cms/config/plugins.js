@@ -34,11 +34,6 @@ module.exports = ({ env }) => ({
     },
   },
 
-  // SEO Plugin for meta management
-  seo: {
-    enabled: true,
-  },
-
   // GraphQL API
   graphql: {
     enabled: true,
@@ -51,9 +46,4 @@ module.exports = ({ env }) => ({
     },
   },
 
-  // Custom Analytics Dashboard
-  'analytics-dashboard': {
-    enabled: true,
-    resolve: './src/plugins/analytics-dashboard',
-  },
 });
