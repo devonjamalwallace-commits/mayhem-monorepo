@@ -1,11 +1,11 @@
 [phases.setup]
-nixPkgs = ["nodejs-20_x", "npm-9_x"]
+nixPkgs = ["nodejs-18_x"]
 
 [phases.install]
-cmds = ["npm install --legacy-peer-deps"]
+cmds = ["npm install"]
 
 [phases.build]
-cmds = ["NODE_ENV=production npm run build"]
+cmds = ["npm run build"]
 
 [start]
-cmd = "NODE_ENV=production npm start"
+cmd = "npm start"
