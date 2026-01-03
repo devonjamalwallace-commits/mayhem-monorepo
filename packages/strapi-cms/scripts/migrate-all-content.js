@@ -195,6 +195,7 @@ const nexusAIProducts = [
 ];
 
 async function migrate() {
+  const strapi = global.strapi || require('@strapi/strapi')().load();
   console.log('🚀 Starting complete content migration...\n');
 
   try {
@@ -261,6 +262,11 @@ async function migrate() {
     console.log(`\nSummary:`);
     console.log(`- ${articleCount} blog articles`);
     console.log(`- ${productCount} products`);
+
+    return {
+      articles: articleCount,
+      products: productCount,
+    };
 
   } catch (error) {
     console.error('❌ Migration error:', error);
