@@ -303,10 +303,11 @@ module.exports = {
     try {
       // Check if migration is needed
       const articleCount = await strapi.db.query('api::article.article').count();
+      const productCount = await strapi.db.query('api::product.product').count();
 
-      strapi.log.info(`📊 Current article count: ${articleCount}`);
+      strapi.log.info(`📊 Current counts - Articles: ${articleCount}, Products: ${productCount}`);
 
-      if (articleCount < 10) {
+      if (articleCount < 10 || productCount < 5) {
         strapi.log.info('🔄 Running automatic content migration...');
 
         // Get sites
