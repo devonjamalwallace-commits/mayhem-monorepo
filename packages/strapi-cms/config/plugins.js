@@ -16,4 +16,10 @@ module.exports = ({ env }) => ({
     enabled: true,
     resolve: './src/plugins/ai-assistant',
   },
+
+  // Marketing Hub Plugin
+  'marketing-hub': {
+    enabled: true,
+    resolve: './src/plugins/marketing-hub',
+  },
 });
