@@ -4,15 +4,15 @@
   "private": true,
   "packageManager": "pnpm@8.15.0",
   "scripts": {
-    "start": "pnpm --filter strapi-cms start",
+    "start": "cd packages/strapi-cms && npm start",
+    "build": "cd packages/strapi-cms && npm run build",
     "dev": "turbo run dev",
-    "build": "pnpm --filter strapi-cms build",
     "lint": "turbo run lint",
     "clean": "turbo run clean && rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
-    "strapi:dev": "pnpm --filter strapi-cms develop",
-    "strapi:build": "pnpm --filter strapi-cms build",
-    "strapi:start": "pnpm --filter strapi-cms start"
+    "strapi:dev": "cd packages/strapi-cms && npm run develop",
+    "strapi:build": "cd packages/strapi-cms && npm run build",
+    "strapi:start": "cd packages/strapi-cms && npm start"
   },
   "devDependencies": {
     "@types/node": "^20.10.0",

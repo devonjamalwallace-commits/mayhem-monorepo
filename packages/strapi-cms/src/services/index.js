@@ -11,4 +11,8 @@ module.exports = {
   gemini: require('./gemini'),
   notion: require('./notion'),
   github: require('./github'),
+  'stripe-commerce': require('./stripe-commerce'),
+  'marketing-automation': require('./marketing-automation'),
+  'seo-tools': require('./seo-tools'),
+  'cloudinary-media': require('./cloudinary-media'),
 };
