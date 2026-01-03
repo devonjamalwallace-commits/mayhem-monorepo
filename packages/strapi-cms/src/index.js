@@ -4,7 +4,8 @@ module.exports = {
   register() {},
   async bootstrap({ strapi }) {
     // Auto-run content migration on first startup
-    const { migrate } = require('./scripts/migrate-all-content');
+    const path = require('path');
+    const { migrate } = require(path.join(__dirname, '../scripts/migrate-all-content'));
 
     try {
       // Set global.strapi for migration script
