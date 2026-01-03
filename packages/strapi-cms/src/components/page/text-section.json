@@ -21,8 +21,8 @@
     },
     "text_columns": {
       "type": "enumeration",
-      "enum": ["1", "2", "3"],
-      "default": "1"
+      "enum": ["one", "two", "three"],
+      "default": "one"
     }
   }
 }
