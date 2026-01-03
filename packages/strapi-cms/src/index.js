@@ -187,6 +187,116 @@ const nexusAIProducts = [
   },
 ];
 
+const mayhemworldProducts = [
+  {
+    name: "Mayhem Logo T-Shirt - Black",
+    slug: "mayhem-logo-tshirt-black",
+    description: "Premium cotton tee with iconic Mayhem World logo. Ultra-soft, perfect fit.",
+    short_description: "Premium cotton tee",
+    price: 34,
+    currency: "USD",
+    product_type: "physical",
+    sku: "MW-TSHIRT-001",
+    status: "active",
+    inventory_quantity: 100,
+    manage_inventory: true,
+    meta_title: "Mayhem Logo T-Shirt - Black",
+    meta_description: "Premium cotton tee with iconic Mayhem World logo",
+  },
+  {
+    name: "Atlanta's Finest Hoodie",
+    slug: "atlantas-finest-hoodie",
+    description: "Premium heavyweight hoodie. Represent ATL nightlife in style.",
+    short_description: "Premium heavyweight hoodie",
+    price: 69,
+    currency: "USD",
+    product_type: "physical",
+    sku: "MW-HOODIE-001",
+    status: "active",
+    featured: true,
+    inventory_quantity: 75,
+    manage_inventory: true,
+    meta_title: "Atlanta's Finest Hoodie - Mayhem World",
+    meta_description: "Premium heavyweight hoodie representing ATL nightlife",
+  },
+  {
+    name: "Mayhem World Fitted Cap",
+    slug: "mayhem-world-fitted-cap",
+    description: "Classic snapback with embroidered logo. One size fits all.",
+    short_description: "Classic snapback",
+    price: 32,
+    currency: "USD",
+    product_type: "physical",
+    sku: "MW-CAP-001",
+    status: "active",
+    inventory_quantity: 150,
+    manage_inventory: true,
+    meta_title: "Mayhem World Fitted Cap",
+    meta_description: "Classic snapback with embroidered Mayhem logo",
+  },
+  {
+    name: "Team Lead Varsity Jacket",
+    slug: "team-lead-varsity-jacket",
+    description: "Premium varsity jacket for top promoters. Leather sleeves, wool body.",
+    short_description: "Premium varsity jacket",
+    price: 149,
+    currency: "USD",
+    product_type: "physical",
+    sku: "MW-JACKET-001",
+    status: "active",
+    inventory_quantity: 25,
+    manage_inventory: true,
+    meta_title: "Team Lead Varsity Jacket - Mayhem World",
+    meta_description: "Premium varsity jacket for top promoters with leather sleeves",
+  },
+  {
+    name: "Legend Status Bomber",
+    slug: "legend-status-bomber",
+    description: "Elite bomber jacket. For those who reached legend rank.",
+    short_description: "Elite bomber jacket",
+    price: 179,
+    currency: "USD",
+    product_type: "physical",
+    sku: "MW-BOMBER-001",
+    status: "active",
+    featured: true,
+    inventory_quantity: 20,
+    manage_inventory: true,
+    meta_title: "Legend Status Bomber - Mayhem World",
+    meta_description: "Elite bomber jacket for legend rank promoters",
+  },
+  {
+    name: "Mayhem Phone Case",
+    slug: "mayhem-phone-case",
+    description: "Protective case with gradient logo. iPhone & Samsung models.",
+    short_description: "Protective phone case",
+    price: 24,
+    currency: "USD",
+    product_type: "physical",
+    sku: "MW-CASE-001",
+    status: "active",
+    inventory_quantity: 200,
+    manage_inventory: true,
+    meta_title: "Mayhem Phone Case",
+    meta_description: "Protective case with gradient Mayhem logo",
+  },
+  {
+    name: "Enamel Pin Set - Rank Badges",
+    slug: "enamel-pin-set-rank-badges",
+    description: "Collectible enamel pins representing all promoter ranks.",
+    short_description: "Collectible enamel pins",
+    price: 22,
+    currency: "USD",
+    product_type: "physical",
+    sku: "MW-PINS-001",
+    status: "active",
+    inventory_quantity: 150,
+    manage_inventory: true,
+    meta_title: "Enamel Pin Set - Rank Badges",
+    meta_description: "Collectible enamel pins for all promoter ranks",
+  },
+];
+
 module.exports = {
   register() {},
   async bootstrap({ strapi }) {
@@ -203,8 +313,9 @@ module.exports = {
         const sites = await strapi.db.query('api::site.site').findMany({});
         const shotbymayhem = sites.find(s => s.site_uid === 'shotbymayhem');
         const nexusai = sites.find(s => s.site_uid === 'nexus-ai');
+        const mayhemworld = sites.find(s => s.site_uid === 'mayhemworld');
 
-        if (!shotbymayhem || !nexusai) {
+        if (!shotbymayhem || !nexusai || !mayhemworld) {
           strapi.log.error('❌ Required sites not found. Skipping migration.');
           return;
         }
@@ -229,7 +340,7 @@ module.exports = {
           }
         }
 
-        // Migrate products
+        // Migrate Nexus AI products
         let newProducts = 0;
         for (const product of nexusAIProducts) {
           const exists = await strapi.db.query('api::product.product').findOne({
@@ -243,6 +354,23 @@ module.exports = {
                 site: nexusai.id,
                 inventory_quantity: 999999,
                 manage_inventory: false,
+              }
+            });
+            newProducts++;
+          }
+        }
+
+        // Migrate Mayhemworld store products
+        for (const product of mayhemworldProducts) {
+          const exists = await strapi.db.query('api::product.product').findOne({
+            where: { slug: product.slug, site: mayhemworld.id }
+          });
+
+          if (!exists) {
+            await strapi.documents('api::product.product').create({
+              data: {
+                ...product,
+                site: mayhemworld.id,
               }
             });
             newProducts++;
