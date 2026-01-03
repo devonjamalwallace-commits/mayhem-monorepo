@@ -86,15 +86,11 @@
     "stripe_session_id": {
       "type": "string"
     },
-    "goddess": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::goddess.goddess"
+    "goddess_id": {
+      "type": "integer"
     },
-    "service": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::service.service"
+    "service_id": {
+      "type": "integer"
     },
     "site": {
       "type": "relation",
@@ -102,10 +98,8 @@
       "target": "api::site.site",
       "required": true
     },
-    "user": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::users-permissions.user"
+    "user_id": {
+      "type": "integer"
     },
     "notes": {
       "type": "text"
