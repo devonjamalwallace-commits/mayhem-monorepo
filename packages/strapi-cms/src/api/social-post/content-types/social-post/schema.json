@@ -46,11 +46,6 @@
       "relation": "manyToOne",
       "target": "api::site.site",
       "required": true
-    },
-    "article": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::article.article"
     }
   }
 }
