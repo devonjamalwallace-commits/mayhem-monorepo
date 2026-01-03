@@ -5,11 +5,11 @@
  * Exposes all integration services via API endpoints
  */
 
-const workosService = require('../../services/workos');
-const n8nService = require('../../services/n8n');
-const geminiService = require('../../services/gemini');
-const notionService = require('../../services/notion');
-const githubService = require('../../services/github');
+const workosService = require('../../../services/workos');
+const n8nService = require('../../../services/n8n');
+const geminiService = require('../../../services/gemini');
+const notionService = require('../../../services/notion');
+const githubService = require('../../../services/github');
 
 module.exports = {
   // ============================================
