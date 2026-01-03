@@ -1,0 +1,60 @@
+{
+  "kind": "collectionType",
+  "collectionName": "case_studies",
+  "info": {
+    "singularName": "case-study",
+    "pluralName": "case-studies",
+    "displayName": "Case Study",
+    "description": "Client success stories and testimonials"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "clientName": {
+      "type": "string",
+      "required": true
+    },
+    "industry": {
+      "type": "string",
+      "required": true
+    },
+    "projectType": {
+      "type": "string"
+    },
+    "challenge": {
+      "type": "text"
+    },
+    "solution": {
+      "type": "text"
+    },
+    "results": {
+      "type": "json"
+    },
+    "testimonial": {
+      "type": "text"
+    },
+    "clientRole": {
+      "type": "string"
+    },
+    "beforeImage": {
+      "type": "string"
+    },
+    "afterImage": {
+      "type": "string"
+    },
+    "videoUrl": {
+      "type": "string"
+    },
+    "metrics": {
+      "type": "json"
+    },
+    "site": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::site.site",
+      "inversedBy": "caseStudies"
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "kind": "collectionType",
+  "collectionName": "goddesses",
+  "info": {
+    "singularName": "goddess",
+    "pluralName": "goddesses",
+    "displayName": "Goddess",
+    "description": "Models and talent roster"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "title": {
+      "type": "string"
+    },
+    "image": {
+      "type": "string"
+    },
+    "gallery": {
+      "type": "json"
+    },
+    "height": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "specialties": {
+      "type": "json"
+    },
+    "experience": {
+      "type": "string"
+    },
+    "instagram": {
+      "type": "string"
+    },
+    "availability": {
+      "type": "enumeration",
+      "enum": ["available", "limited", "booked"],
+      "default": "available"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false
+    },
+    "bio": {
+      "type": "text"
+    },
+    "site": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::site.site",
+      "inversedBy": "goddesses"
+    }
+  }
+}

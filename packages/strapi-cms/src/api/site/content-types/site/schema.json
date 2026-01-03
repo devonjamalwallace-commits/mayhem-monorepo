@@ -111,6 +111,36 @@
       "relation": "oneToMany",
       "target": "api::category.category",
       "mappedBy": "site"
+    },
+    "articles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::article.article",
+      "mappedBy": "site"
+    },
+    "caseStudies": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::case-study.case-study",
+      "mappedBy": "site"
+    },
+    "services": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::service.service",
+      "mappedBy": "site"
+    },
+    "goddesses": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::goddess.goddess",
+      "mappedBy": "site"
+    },
+    "testimonials": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::testimonial.testimonial",
+      "mappedBy": "site"
     }
   }
 }
