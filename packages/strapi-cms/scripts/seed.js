@@ -42,6 +42,15 @@ const sites = [
     secondary_color: '#1f2937',
     status: 'active',
   },
+  {
+    name: 'House of KarléVon',
+    site_uid: 'house-of-karlevon',
+    domain: 'houseofkarlevon.com',
+    description: 'Luxury Streetwear E-commerce - Dark-mode brutalist fashion with AI-powered styling',
+    primary_color: '#000000',
+    secondary_color: '#18181b',
+    status: 'active',
+  },
 ];
 
 async function seed(strapi) {

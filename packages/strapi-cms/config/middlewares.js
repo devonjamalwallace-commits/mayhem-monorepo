@@ -42,6 +42,8 @@ module.exports = [
         'https://www.shotbymayhem.com',
         'https://goddessesofatl.com',
         'https://www.goddessesofatl.com',
+        'https://houseofkarlevon.com',
+        'https://www.houseofkarlevon.com',
         'https://*.vercel.app', // All Vercel preview/production deployments
       ],
       headers: '*',
