@@ -45,4 +45,10 @@ module.exports = ({ env }) => ({
     enabled: true,
     resolve: './src/plugins/marketing-hub',
   },
+
+  // Analytics Dashboard Plugin
+  'analytics-dashboard': {
+    enabled: true,
+    resolve: './src/plugins/analytics-dashboard',
+  },
 });
