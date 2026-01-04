@@ -11,6 +11,29 @@ module.exports = ({ env }) => ({
     },
   },
 
+  // Cloudinary Upload Provider - CRITICAL for media storage
+  upload: {
+    config: {
+      provider: 'cloudinary',
+      providerOptions: {
+        cloud_name: env('CLOUDINARY_CLOUD_NAME'),
+        api_key: env('CLOUDINARY_API_KEY'),
+        api_secret: env('CLOUDINARY_API_SECRET'),
+      },
+      actionOptions: {
+        upload: {
+          folder: env('CLOUDINARY_FOLDER', 'mayhem'),
+          resource_type: 'auto',
+        },
+        uploadStream: {
+          folder: env('CLOUDINARY_FOLDER', 'mayhem'),
+          resource_type: 'auto',
+        },
+        delete: {},
+      },
+    },
+  },
+
   // AI Assistant Plugin
   'ai-assistant': {
     enabled: true,
