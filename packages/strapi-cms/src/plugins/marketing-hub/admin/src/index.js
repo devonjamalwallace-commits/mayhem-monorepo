@@ -24,8 +24,8 @@ export default {
 
     app.registerPlugin({
       id: pluginId,
-      initializer: Initializer,
-      isReady: false,
+      initializer: () => null,
+      isReady: true,
       name,
     });
   },
