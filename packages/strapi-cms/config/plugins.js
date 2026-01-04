@@ -46,9 +46,9 @@ module.exports = ({ env }) => ({
     resolve: './src/plugins/marketing-hub',
   },
 
-  // Analytics Dashboard Plugin
-  'analytics-dashboard': {
-    enabled: true,
-    resolve: './src/plugins/analytics-dashboard',
-  },
+  // Analytics Dashboard Plugin (disabled until fully configured)
+  // 'analytics-dashboard': {
+  //   enabled: true,
+  //   resolve: './src/plugins/analytics-dashboard',
+  // },
 });
