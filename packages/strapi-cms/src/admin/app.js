@@ -1,5 +1,3 @@
-import { Lightbulb, Mail, ChartPie } from '@strapi/icons';
-
 export default {
   config: {
     // Add site colors
@@ -24,49 +22,9 @@ export default {
     notifications: { releases: false },
   },
   register(app) {
-    // Register custom plugin menu links
-
-    app.addMenuLink({
-      to: '/plugins/ai-assistant',
-      icon: Lightbulb,
-      intlLabel: {
-        id: 'ai-assistant.plugin.name',
-        defaultMessage: 'AI Assistant',
-      },
-      Component: async () => {
-        const component = await import('../plugins/ai-assistant/admin/src/pages/App');
-        return component;
-      },
-      permissions: [],
-    });
-
-    app.addMenuLink({
-      to: '/plugins/marketing-hub',
-      icon: Mail,
-      intlLabel: {
-        id: 'marketing-hub.plugin.name',
-        defaultMessage: 'Marketing Hub',
-      },
-      Component: async () => {
-        const component = await import('../plugins/marketing-hub/admin/src/pages/App');
-        return component;
-      },
-      permissions: [],
-    });
-
-    app.addMenuLink({
-      to: '/plugins/analytics-dashboard',
-      icon: ChartPie,
-      intlLabel: {
-        id: 'analytics-dashboard.plugin.name',
-        defaultMessage: 'Analytics Dashboard',
-      },
-      Component: async () => {
-        const component = await import('../plugins/analytics-dashboard/admin/src/pages/App');
-        return component;
-      },
-      permissions: [],
-    });
+    // Plugin registration
+    // Note: Custom plugins (AI Assistant, Marketing Hub, Analytics) are accessible via API only
+    // See PLUGIN_API_GUIDE.md for API endpoints
   },
 
   bootstrap(app) {
