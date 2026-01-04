@@ -21,6 +21,53 @@ export default {
     tutorials: false,
     notifications: { releases: false },
   },
+  async register(app) {
+    // Register custom plugin menu links
+    const { Lightbulb, Mail, ChartPie } = await import('@strapi/icons/symbols');
+
+    app.addMenuLink({
+      to: '/plugins/ai-assistant',
+      icon: Lightbulb,
+      intlLabel: {
+        id: 'ai-assistant.plugin.name',
+        defaultMessage: 'AI Assistant',
+      },
+      Component: async () => {
+        const component = await import('../plugins/ai-assistant/admin/src/pages/App');
+        return component;
+      },
+      permissions: [],
+    });
+
+    app.addMenuLink({
+      to: '/plugins/marketing-hub',
+      icon: Mail,
+      intlLabel: {
+        id: 'marketing-hub.plugin.name',
+        defaultMessage: 'Marketing Hub',
+      },
+      Component: async () => {
+        const component = await import('../plugins/marketing-hub/admin/src/pages/App');
+        return component;
+      },
+      permissions: [],
+    });
+
+    app.addMenuLink({
+      to: '/plugins/analytics-dashboard',
+      icon: ChartPie,
+      intlLabel: {
+        id: 'analytics-dashboard.plugin.name',
+        defaultMessage: 'Analytics Dashboard',
+      },
+      Component: async () => {
+        const component = await import('../plugins/analytics-dashboard/admin/src/pages/App');
+        return component;
+      },
+      permissions: [],
+    });
+  },
+
   bootstrap(app) {
     console.log('Mayhem CMS Admin Loaded');
 
