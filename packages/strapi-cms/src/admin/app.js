@@ -1,3 +1,5 @@
+import { Lightbulb, Mail, ChartPie } from '@strapi/icons';
+
 export default {
   config: {
     // Add site colors
@@ -21,9 +23,8 @@ export default {
     tutorials: false,
     notifications: { releases: false },
   },
-  async register(app) {
+  register(app) {
     // Register custom plugin menu links
-    const { Lightbulb, Mail, ChartPie } = await import('@strapi/icons/symbols');
 
     app.addMenuLink({
       to: '/plugins/ai-assistant',
